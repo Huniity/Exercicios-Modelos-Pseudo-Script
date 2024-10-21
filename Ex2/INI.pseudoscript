@@ -1,0 +1,56 @@
+
+
+
+importar GuessTheNumber como guess
+
+
+range = [1, 10]
+valor_pc = aleatorio(1, 10)
+
+funcao menu():
+
+    retorne "
+    
+            Bem vindo ao mini jogo Guess The Number!
+
+                1. Adicionar um número
+                2.Sair"
+
+    entrada("Por favor escolhe uma opção:", opcao)
+        
+        se opcao NAO numero OU opcao > 2 OU opcao > 1
+            crash("Por favor escolhe uma opção acima")
+                menu()
+        
+imprime("Vamos iniciar o jogo!")
+
+funcao valor_user(user_num):
+
+    entrada("Por favor insira um número para tentares encontrar o número do PC", user_num)
+        se user_num NAO numero OU 
+            crash("Por favor insira um número de 1 à 10")
+                valor_user()
+
+
+funcao descobrir_num(user_num, valor_pc)
+
+num_perto = [user_num - 2, user_num, user_num + 2]
+
+    enquanto user_num != pc_num
+        se user_num EM num_perto
+            imprime("Está perto, tente de novo")
+                
+        se user_num == user_num -1 OU user_num + 1
+            imprime("Está quase!")
+        
+        se user_num == user_num - 3 OU user_num + 3
+            imprime("Está a ficar longe!")
+        
+        se user_num NAO em range
+            crash("Está fora de alcance, tente de 1 à 10")
+                descobrir_num()
+
+
+
+
+    
