@@ -1,0 +1,157 @@
+
+
+
+modelo CalculadoraComConstru:
+    construtor(valor1, valor2)
+        CalculadoraComConstru.valor1 = valor1
+        CalculadoraComConstru.valor2 = valor2
+
+
+
+    funcao somar():
+        retorne CalculadoraComConstru.valor1 + CalculadoraComConstru.valor2
+    funcao subtrair():
+        retorne CalculadoraComConstru.valor1 - CalculadoraComConstru.valor2
+    funcao multiplicar():
+        retorne CalculadoraComConstru.valor1 * CalculadoraComConstru.valor2
+    funcao dividir():
+        retorne CalculadoraComConstru.valor1 / CalculadoraComConstru.valor2
+
+
+
+modelo CalculadoraSemConstru:
+    funcao somar(valor1, valor2):
+        retorne valor1 + valor2
+    funcao subtrair(valor1, valor2):
+        retorne valor1 - valor2
+    funcao multiplicar(valor1, valor2):
+        retorne valor1 * valor2
+    funcao dividir(valor1, valor2):
+        retorne valor1 / valor2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+        funcao adicionar(user_num1, user_num2)
+
+
+            valores = []
+            pos = 0
+
+            entrada("Escolheu adicionar. Vamos inserir o primeiro número", user_num1)
+                se user_num1 NAO numero
+                    crash("Tem de inserir um número")
+            valores[pos].adicionar(user_num1)
+            pos = pos + 1
+
+            entrada("Vamos adicionar um segundo número", user_num2)
+                se user_num2 NAO numero
+                    crash("Tem de inserir um número")
+            valores[pos].adicionar(user_num2)
+            pos = pos + 1
+
+            entrada("Deseja adicionar mais números? (SIM/NAO)", escolha)
+                se escolha EM ["SIM", "s"]
+                    entrada("Vamos adicionar mais um número", user_nums)
+                        se user_nums NAO numero
+                    crash("Tem de inserir um número")
+                    valores[pos].adicionar(user_nums)
+                    pos = pos + 1
+
+
+            imprime("Já temos os seus números, vamos adicionar todos os números inseridos")
+
+            indice_inicio = 0
+            enquanto valores.tamanho-1 > 0
+                para cada valor em valores
+                    soma = valor[indice_inicio] + valor[indice_inicio+1]
+                        pos = pos + 1
+                        retorne resultado
+
+            imprime("O resultado da sua função adicionar é {resultado}".")
+
+            */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

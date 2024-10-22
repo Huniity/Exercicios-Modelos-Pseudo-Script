@@ -1,0 +1,47 @@
+#To-Do List: Crie uma aplicação de lista de tarefas. O programa deve permitir adicionar
+#tarefas, marcar tarefas como concluídas e listar as tarefas pendentes.
+
+modelo toDoList():
+
+toDoList.tarefa_pendente = {'Tarefa': tarefa, 'Status': status}
+toDoList.tarefa_concluida = {'Tarefa': tarefa, 'Status': status}
+toDoList.nova_lista = {'Tarefa': tarefa, 'Status': status}
+
+    funcao pedirTarefa(tarefa)
+        se tarefa EM toDoList.tarefa_pendente():
+            crash("Sua tarefa já existe")
+        se tarefa NAO string:
+            crash("Tem de inserir cráteres")
+        se tarefa NAO EM toDoList.tarefa_pendente():
+            toDoList.tarefa_pendente.tarefa.adicionar(tarefa)
+            retorne "{toDoList.tarefa_pendente['Tarefa']} - {toDoList.tarefa_pendente['Status']} adicionado"
+                marcarConcluida()
+
+    funcao marcarConcluidar(tarefa)
+        imprime(listarTarefas())
+            para cada tarefa, status em tarefa_pendente:
+            se tarefa_user EM tarefa_pendente():
+                retorne "A sua tarefa está como pendente"
+                    entrada("Pretende mudar a sua tarefa para concluída? (1: SIM/ 2: NAO)", opcao)
+                        se opcao NAO numero
+                            crash("Tem de escrever um número")
+                        se opcao == 1 # remove tarefa
+                            tarefa_concluida.tarefa.adicionar(tarefa_user)
+                            removerTarefa()
+                        se opcao == 2 # volta ao inicio
+
+
+
+    
+    funcao removerTarefa(tarefa)
+        enquanto tarefa_pendente.tamanho() > 0
+            para cada tarefa em tarefa_pendente()
+                se tarefa != tarefa_user
+                    nova_lista.adicionar(tarefa)
+        tarefa_pendente = nova_lista()
+        listarTarefas()
+
+    funcao listarTarefas()
+        imprime("Estas são as suas tarefas pendentes:")
+            para cada tarefa, status em toDoList.tarefa_pendente()
+                imprime({toDoList.tarefa_pendente['Tarefa']} - {toDoList.tarefa_pendente['Status']})

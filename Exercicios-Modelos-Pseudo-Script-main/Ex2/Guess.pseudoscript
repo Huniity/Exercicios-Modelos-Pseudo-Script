@@ -1,0 +1,11 @@
+
+
+modelo GuessTheNumber():
+
+        GuessTheNumber.valor_pc = valor_pc
+        GuessTheNumber.valor_user = valor_user
+
+        funcao computador(valor_pc):
+            valor_pc = aleatorio()
+
+

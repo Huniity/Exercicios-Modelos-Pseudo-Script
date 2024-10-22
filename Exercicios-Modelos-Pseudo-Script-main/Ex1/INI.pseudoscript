@@ -1,0 +1,17 @@
+#Calculator App: Crie um programa que simule uma calculadora básica, permitindo a entrada
+#de dois números e realizando operações de adição, subtração, multiplicação e divisão.
+
+
+importar Calculadora como math
+
+calculadoraSC=math.CalculadoraSemConstru()
+
+imprime(calculadoraSC.somar(1,2))
+imprime(calculadoraSC.subtrair(1,2))
+...
+
+calculadoraCC = CalculadoraComConstru(1,2)
+
+imprime(calculadoraCC.soma())
+imprime(calculadoraCC.subtrair())
+...
