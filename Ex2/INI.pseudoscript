@@ -1,56 +1,105 @@
-
-
-
 importar GuessTheNumber como guess
+GuessTheNumber = guess.GuessTheNumber(valor_pc, valor_user, palpite)
+
+GuessTheNumber.start()
+
+#######################################################################
+
+modelo GuessTheNumber:
+    construtor(valor_pc, valor_user, palpite)
+        GuessTheNumber.valor_pc = aleatorio(1, 10)
+        GuessTheNumber.valor_user = valor_user
+        GuessTheNumber.palpite = [valor_pc - 2, valor_pc + 2]
 
 
-range = [1, 10]
-valor_pc = aleatorio(1, 10)
-
-funcao menu():
-
-    retorne "
-    
-            Bem vindo ao mini jogo Guess The Number!
-
-                1. Adicionar um número
-                2.Sair"
-
-    entrada("Por favor escolhe uma opção:", opcao)
+        funcao start(valor_pc, valor_user):
         
-        se opcao NAO numero OU opcao > 2 OU opcao > 1
-            crash("Por favor escolhe uma opção acima")
-                menu()
+            retorne "
         
-imprime("Vamos iniciar o jogo!")
+                Bem vindo ao mini jogo Guess The Number!
 
-funcao valor_user(user_num):
+                    1. Adicionar um número
+                    2. Sair"
 
-    entrada("Por favor insira um número para tentares encontrar o número do PC", user_num)
-        se user_num NAO numero OU 
-            crash("Por favor insira um número de 1 à 10")
-                valor_user()
-
-
-funcao descobrir_num(user_num, valor_pc)
-
-num_perto = [user_num - 2, user_num, user_num + 2]
-
-    enquanto user_num != pc_num
-        se user_num EM num_perto
-            imprime("Está perto, tente de novo")
+            entrada("Por favor escolhe uma opção:", opcao)
+            
+                se opcao NAO numero OU opcao > 2 OU opcao > 1
+                    crash("Por favor escolhe uma opção acima")
+                        menu()
                 
-        se user_num == user_num -1 OU user_num + 1
-            imprime("Está quase!")
-        
-        se user_num == user_num - 3 OU user_num + 3
-            imprime("Está a ficar longe!")
-        
-        se user_num NAO em range
-            crash("Está fora de alcance, tente de 1 à 10")
+                se opcao == 1
+                    imprime("Vamos iniciar o jogo!")
+                        valor_user()
+
+                se opcao == 2
+                    imprime("Obrigado até já")
+                        quebra()
+
+
+        funcao valor_user(valor_user):
+
+            entrada("Por favor insira um número para tentares encontrar o número do PC", valor_user)
+                se valor_user NAO numero
+                    se valor_user < 1 OU > 10
+                        crash("Por favor insira um número de 1 à 10")
+                            valor_user()
+            imprime("Vamos a isso!")
                 descobrir_num()
 
 
+        funcao descobrir_num(valor_user, valor_pc)
+
+            enquanto valor_user != valor_pc
+                se valor_user EM palpite
+                    imprime("Está perto, tente de novo")
+                        valor_user()
+                        
+                se valor_user == valor_pc -1 OU valor_pc + 1
+                    imprime("Está quase!")
+                        valor_user()
+                
+                se valor_user == valor_pc - 3 OU valor_pc + 3
+                    imprime("Está a ficar longe!")
+                        valor_user()
+                
+                se valor_user < 1 OU > 10
+                    crash("Está fora de alcance, tente de 1 à 10")
+                        descobrir_num()
+
+            imprime("Parabéns encontrou o número!")
 
 
-    
+
+
+
+####################### Resolução Aula #######################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
