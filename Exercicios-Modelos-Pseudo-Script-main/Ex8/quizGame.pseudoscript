@@ -1,0 +1,19 @@
+modelo quizGame:
+    construtor(resposta1, resposta2, resposta3, resposta4)
+        quizGame.resposta1 = "Um jogo"
+        quizGame.resposta2 = "Um carro"
+        quizGame.resposta3 = "Um animal"
+        quizGame.resposta4 = "Um objeto"
+        pontuacao_user = 0
+
+
+    funcao pergunta_1(resposta1)
+            se resposta_user == quizGame.resposta1
+                retorne "Parabéns acertou! Ganhou 10 pts"
+                    pontuacao_user = pontuacao_user + 10
+            se resposta_user == quizGame.resposta2 OU resposta_user == quizGame.resposta3 OU resposta_user == quizGame.resposta4
+                retorne "Errou! Perdeu 5 pts"
+                    pontuacao_user = pontuacao_user + 5
+
+    
+           

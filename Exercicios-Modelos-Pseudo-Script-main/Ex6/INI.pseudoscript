@@ -1,1 +1,28 @@
-q
+importar bmicalculator como conversor
+
+programa=conversor.bmicalculator()
+
+funcao menu():
+
+    retorne"
+            Bem vindo ao conversor de Temperatura.
+                As opções possíveis são:
+                    1: Inserir os seus dados
+                    2: Sair
+            "
+
+    entrada("Por favor introduza uma das opções acima:")
+        se opcao NAO numero OU opcao > 3 OU opcao > 1
+            crash("Por favor escolhe uma opção acima")
+                menu()
+                    
+        se opcao == 1:
+            entrada("Insire por favor o seu peso", peso)
+            entrada("Insire por favor o seu tamanho", peso)
+                imprime(programa.calcular_bmi(peso, peso))
+
+        se opcao == 2:
+            imprime("Obrigado até já")
+                quebra()
+
+imprime(menu()) 

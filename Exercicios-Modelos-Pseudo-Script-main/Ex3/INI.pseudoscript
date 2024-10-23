@@ -1,71 +1,48 @@
 importar toDoList como modulo
 
-tarefa_pendente = ('Tarefa': tarefa, 'Status': status)
-tarefa_concluida = ('Tarefa': tarefa, 'Status': status)
-nova_lista = ()
-
-
-    funcao listarTarefas():
-        para cada tarefa, status em tarefa_pendente:
-            imprime("Estas são a suas tarefas pendentes: {tarefa_pendente['Tarefa']} - {tarefa_pendente['Status']}")
-        
-
-    funcao pedirTarefa():
-        entrada("Por favor introduza uma tarefa das listadas acima:", tarefa_user)
-            se tarefa_user NAO string:
-                crash("Por favor tem de ser apenas caráteres")
-            se tarefa_user NAO EM tarefa_pendente(): #NAO EM toDoList.tarefa_pendente()
-                tarefa_pendente[tarefa].adicionar(tarefa_user)  #toDoList.tarefa_pendente.adicionar(tarefa_user)
-                tarefa_pendente[status] = "Pendente"
-                    marcarConcluida() #toDoList.marcarConcluida()
-            se tarefa_user EM tarefa_pendente():#EM toDoList.tarefa_pendente()
-                marcarConcluida() #toDoList.marcarConcluida()
-
-
-    funcao marcarConcluida():
-        para cada tarefa, status em tarefa_pendente:
-            se tarefa_user EM tarefa_pendente():
-                retorne "A sua tarefa está como pendente"
-                    entrada("Pretende mudar a sua tarefa para concluída? (1: SIM/ 2: NAO)", opcao)
-                        se opcao NAO numero
-                            crash("Tem de escrever um número")
-                        se opcao == 1 # remove tarefa
-                            tarefa_concluida.tarefa.adicionar(tarefa_user)
-                            removerTarefa()
-                        se opcao == 2 # volta ao inicio
-                            listarTarefas()
-
-    funcao removerTarefa():
-        enquanto tarefa_pendente.tamanho() > 0:
-            para cada tarefa em tarefa_pendente.chaves():
-                se tarefa != tarefa_user:
-                    nova_lista..tarefa.adicionar(tarefa)
-        tarefa_pendente = nova_lista()
-        listarTarefas()
-
-imprime(listarTarefas())
-
-
-
-
-
-
-
-###############################
-
-
-
-importar toDoList como modulo
-
 
 programa = modulo.toDoList()
 
+
+funcao menu():
+    retorne "
+            
+                    Bem vindo ao mini jogo Guess The Number!
+
+                        1. Inserir uma tarefa
+                        2. Marcar uma tarefa como concluída
+                        3. Listar tarefas pendentes
+                        4. Sair
+                        
+                        "
+
+                entrada("Por favor escolhe uma opção:", opcao)
+                
+                    se opcao NAO numero OU opcao > 3 OU opcao > 1
+                        crash("Por favor escolhe uma opção acima")
+                            menu()
+                    
+                    se opcao == 1
+                        imprime("Vamos entao inserir uma tarefa")
+                            inserir_tarefa()
+                    se opcao == 2
+                        imprime("Vamos entao marcar a tarefa como concluída")
+                            inserir_tarefa()
+                    se opcao == 3
+                        imprime("Vamos entao listar as suas tarefas")
+                            programa.toDoList.listarTarefas()
+                    se opcao == 4
+                        imprime("Obrigado até já")
+                            quebra() 
+
+
 funcao inserir_tarefa():
     entrada("Por favor introduza uma tarefa", tarefa_user)
-    imprime(programa.toDoList(tarefa_user))   
+    imprime(programa.toDoList(tarefa_user))
 
-funcao concluir_tarefa():
-    entrada
+
+
+
 
 
                         
