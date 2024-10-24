@@ -1,19 +1,37 @@
 modelo quizGame:
-    construtor(resposta1, resposta2, resposta3, resposta4)
-        quizGame.resposta1 = "Um jogo"
-        quizGame.resposta2 = "Um carro"
-        quizGame.resposta3 = "Um animal"
-        quizGame.resposta4 = "Um objeto"
-        pontuacao_user = 0
+    construtor(pergunta, pontuacao_user)
+        quizGame.pergunta =  [
+            {
+                "pergunta": "O que é World of Warcraft?",
+                "respostas": ["Um carro", "Um jogo", "Um objeto", "Um animal"],
+                "resposta_certa": "Um jogo"
+            },
+            {
+                "pergunta": "Qual a tua escola?",
+                "respostas": ["ETIC", "CETI", "TECI", "ICET"],
+                "resposta_certa": "ETIC"
+            },
+            {
+                "pergunta": "O que significa PW",
+                "respostas": ["Partição Web", "População Web", "Programação Web", "Problema Web"],
+                "resposta_certa": "Programação Web"
+            }
+        ]
+        quizGame.pontuacao_user = 0
 
-
-    funcao pergunta_1(resposta1)
-            se resposta_user == quizGame.resposta1
-                retorne "Parabéns acertou! Ganhou 10 pts"
-                    pontuacao_user = pontuacao_user + 10
-            se resposta_user == quizGame.resposta2 OU resposta_user == quizGame.resposta3 OU resposta_user == quizGame.resposta4
-                retorne "Errou! Perdeu 5 pts"
-                    pontuacao_user = pontuacao_user + 5
-
+    funcao quiz(pergunta, pontuacao_user)
+        enquanto quizGame.pergunta.tamanho() > 0
+            para cada pergunta, respostas em quizGame.pergunta:
+                imprime({quizGame.pergunta["pergunta"]})
+                    imprime({quizGame.pergunta["respostas"]})
+                        quizGame.verificar_resposta(resposta_user)
     
-           
+    
+    funcao verificar_resposta(resposta_user)
+         se quizGame.resposta_certa != resposta_user
+            retorne "Errou!"
+         se quizGame.resposta_certa == resposta_user
+            retorne "Parabéns acertou"
+                quizGame.pontuacao_user += 5
+                
+
