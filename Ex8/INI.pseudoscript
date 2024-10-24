@@ -1,6 +1,6 @@
-importar quizGame como game 
+importar QuizGame como game 
 
-programa = game.quizGame()
+programa = game.QuizGame()
 
 
 funcao menu():
@@ -13,20 +13,31 @@ funcao menu():
             "
 
     entrada("Por favor introduza uma das opções acima:")
-        se opcao NAO numero OU opcao > 3 OU opcao > 1
-            crash("Por favor escolhe uma opção acima")
-                menu()
-                    
-        se opcao == 1:
-            imprime(programa.start_quiz())
+        
+        enquanto opcao NAO 2
+            se opcao NAO numero OU opcao > 3 OU opcao > 1
+                crash("Por favor escolhe uma opção acima")
+                    menu()                   
+            se opcao == 1:
+                imprime(start_quiz())
 
-        se opcao == 2:
-            imprime("Obrigado até já")
-                quebra()
+            se opcao == 2:
+                imprime("Obrigado até já")
+                    quebra()
 
 imprime(menu())
 
-funcao pergunta__1()
+
+    funcao start_quiz(pergunta, pontuacao_user)
+        enquanto programa.QuizGame.pergunta.tamanho() > 0
+            para cada pergunta, respostas em programa.QuizGame.pergunta:
+                imprime({programa.QuizGame.pergunta["pergunta"]})
+                    imprime({programa.QuizGame.pergunta["respostas"]})
+                        entrada("Por favor introduza a resposta que acha certa:", resposta_user)
+                            se resposta_user NAO string OU NAO em programa.QuizGame.pergunta["respostas"]
+                                crash("Resposta não valida")
+                            programa.QuizGame.verificar_resposta(resposta_user)
+
     
 
 

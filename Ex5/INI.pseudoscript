@@ -1,1 +1,40 @@
-q
+importar TextEditor como editor
+
+programa = editor.TextEditor()
+
+
+funcao menu():
+
+    retorne"
+            Bem vindo ao Editor de Notas.
+                As opções possíveis são:
+                    1: Adicionar uma nota
+                    2: Editar a nota
+                    3: Remover a nota
+                    4: Sair
+            "
+
+    entrada("Por favor introduza uma das opções acima:", opcao)  
+        enquanto opcao NAO 4:
+            se opcao NAO numero OU opcao > 3 OU opcao > 1:
+                crash("Por favor escolhe uma opção acima")
+                    menu()
+            
+            se opcao == 1:
+                entrada("Por favor insire o titulo da sua nota", titulo_nota_user)
+                entrada("Por favor insire a descrição da sua nota", desc_nota_user)
+                    imprime(editor.verificar_nota(titulo_nota_user, desc_nota_user))
+            se opcao == 2:
+                entrada("Insire o titulo da sua nota que pretende editar", editar_nota_user)
+                    entrada("Insire a nova descrição da nota", nova_desc)
+                        imprime(editor.editar_nota(editar_nota_user, nova_desc))
+            se opcao == 3:
+                imprime("Insire o titulo da sua nota que pretende remover", remover_nota_user)
+                    imprime(editor.remover_nota(remover_nota_user))
+            se opcao == 4:
+                imprime("Obrigado até já!")
+                    quebra()
+
+imprime(menu())
+
+

@@ -1,0 +1,51 @@
+modelo InventoryManagement
+    
+    construtor(stock)
+    
+    stock = ("Nome Item": item, "Stock": stock)
+
+    funcao adicionar_inventario()
+        se verificacao_item == FALSO
+            entrada("Por favor introduza a quantidade do item que pretende inserir", nova_qtd)
+            InventoryManagement.stock.adicionar[user_item][nova_qtd]
+                retorne "{InventoryManagement.stock[user_item][stock]}"
+
+
+    funcao editar_inventario()
+        listar_inventario()
+            se verificacao_item == FALSO
+                entrada("Qual a nova quantidade do item", qtd_atualizada)
+                    InventoryManagement.stock[stock] = qtd_atualizada
+                        retorne "{InventoryManagement.stock[user_item]} | Stock Atual: {InventoryManagement.stock[stock]}"
+
+
+    funcao remover_inventario()
+        stock_temp = ()
+            se verificacao_item == FALSO
+                para cada item, stock em InventoryManagement.stock:    
+                    se user_item != InventoryManagement.stock[item]:
+                        stock_temp.adicionar(InventoryManagement.stock[item][stock])
+                InventoryManagement.stock = stock_temp
+                    retorne "O seu novo stock é {InventoryManagement.stock[item]} | {InventoryManagement.stock[stock]}."
+
+
+    funcao listar_inventario()
+        para cada item, stock em InventoryManagement.stock:
+            imprime("Item: 
+                    {InventoryManagement.stock[item]} | Stock Atual: {InventoryManagement.stock[stock]}")
+
+
+    funcao verificacao_item(user_item)
+        para cada item em InventoryManagement.stock.chaves()
+            se user_item NAO string
+                crash("Tem de inserir um item do stock")
+            se user_item NAO EM InventoryManagement.stock[item]
+                imprime("Item não existe no seu stock.")
+                entrada("Item não existe, deseja adiciona-lo?", opcao)
+                    se opcao != 1 OU opcao != 2
+                        crash("Não nas opções disponíveis")
+                    se opcao == 1
+                    InventoryManagement.adicionar_inventario()
+                    se opcao == 2
+                        quebra()
+        retorne FALSO

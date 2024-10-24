@@ -1,11 +1,14 @@
+modelo GuessNumber:
+    construtor():
+        GuessNumber.numeroGerado = aleatorio(1,100)
 
-
-modelo GuessTheNumber():
-
-        GuessTheNumber.valor_pc = valor_pc
-        GuessTheNumber.valor_user = valor_user
-
-        funcao computador(valor_pc):
-            valor_pc = aleatorio()
-
-
+    funcao devolverPista(palpiteDadoPeloUser):
+        se palpiteDadoPeloUser NAO é numero:
+            crash("Tem de inserir um valor entre 0 e 100")
+        se palpiteDadoPeloUser < 0 OU palpiteDadoPeloUser > 100:
+            crash("Tem de inserir um valor entre 0 e 100")
+        se palpiteDadoPeloUser == GuessNumber.numeroGerado:
+            retorne "GANHOU!"
+        se palpiteDadoPeloUser > GuessNumber.numeroGerado:
+            retorne "Tem de inserir um numero menor do que {palpiteDadoPeloUser}"
+        retorne "Tem de inserir um numero mair do que {palpiteDadoPeloUser}"

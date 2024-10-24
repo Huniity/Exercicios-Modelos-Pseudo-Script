@@ -1,0 +1,51 @@
+modelo BookingSystem:
+    construtor(comp_casamento, hotel_paris):
+
+    BookingSystem.comp_casamento = [
+            {
+                'Casamento': 'Quinta Monte Amarelo', 
+                'Preço': 2550, 
+                'Data':[25/11/2024, 27/11/2024]
+            }
+        ]
+
+    BookingSystem.hotel_paris = [
+                         
+            {
+                'Hotel': 'Hilton Paris',
+                'Quartos':['Quarto Superior', 'Quarto Premium'],
+                'Data': [26/11/2024, 30/11/2024],
+                'Preço': 455
+            }
+        ]
+
+    BookingSystem.reserva_comp = ()
+    BookingSystem.reserva_hotel = ()
+    
+    funcao reservar_compromisso()
+        para cada chave, valor em BookingSystem.comp_casamento:
+            imprime("Tipo de compromisso disponível: {BookingSystem.comp_casamento['Casamento']} | Preço: {BookingSystem.comp_casamento['Preço']} | Data Disponível: {BookingSystem.comp_casamento['Data']}")
+        se escolha_user NAO EM BookingSystem.comp_casamento:
+            crash("Este compromisso não está disponível")
+        se escolha_user EM BookingSystem.comp_casamento:
+            se data_user NAO EM BookingSystem.comp_casamento['Data']:
+                crash("Está data não está disponível.")
+                imprime(reservar_compromisso())
+            se data_user EM BookingSystem.comp_casamento['Data']:
+                BookingSystem.reserva_comp.adicionar(BookingSystem.comp_casamento['Casamento']['Preço']['Data'])
+                BookingSystem.reserva_comp['Data'] == data_user
+                    entrada("Quantas noites pretende?", noites)
+                        BookingSystem.reserva_comp['Preço'] = BookingSystem.comp_casamento['Preço'] * noites 
+                            retorne "O seu {BookingSystem.reserva_comp['Casamento']} está reservado na data {BookingSystem.reserva_comp['Data']} no preço de {BookingSystem.reserva_comp['Preço']}"
+
+    funcao reservar_hotel()
+
+
+
+    funcao listar_reservas()
+
+
+    funcao verificar_dispo_comp()
+
+
+    funcao verificar_dispo_hotel()

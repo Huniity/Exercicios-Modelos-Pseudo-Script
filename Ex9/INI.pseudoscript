@@ -1,1 +1,41 @@
-q
+importar InventoryManagement como inventory 
+
+programa = inventory.InventoryManagement()
+
+
+funcao menu():
+
+    retorne"
+            Bem vindo ao Gestor de Stocks.
+                As opções possíveis são:
+                    1: Adicionar um item ao stock
+                    2: Editar um item do stock
+                    3: Remover um item do stock
+                    4: Listar os itens do stock
+                    5: Sair
+            "
+
+    entrada("Por favor introduza uma das opções acima:")
+            enquanto opcao NAO 5   
+                se opcao NAO numero OU opcao > 3 OU opcao > 1
+                    crash("Por favor escolhe uma opção acima")
+                        menu()
+            
+                se opcao == 1:
+                    entrada("Por favor introduza o nome do seu item:", novo_item)
+                    imprime(programa.adicionar_inventario())
+                se opcao == 2:
+                    imprime(programa.listar_inventario())
+                    entrada("Por favor introduza o nome do seu item:", editar_item)
+                    imprime(programa.editar_inventario())
+                se opcao == 3:
+                    imprime(programa.listar_inventario())
+                    entrada("Por favor introduza o nome do seu item a remover:", remover_item)
+                    imprime(programa.remover_inventario())
+                se opcao == 4:
+                    imprime(programa.listar_inventario())
+                se opcao == 5:
+                    imprime("Obrigado até já")
+                        quebra()
+
+imprime(menu())

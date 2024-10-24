@@ -1,0 +1,16 @@
+modelo ConversorMoedas:
+    construtor(euro_usd, usd_euro, valor1)
+        ConversorMoedas.euro_usd = 1.08
+        ConversorMoedas.usd_euro = 0.93
+        ConversorMoedas.valor1 = valor1
+
+    funcao euro_to_usd(valor1, euro_usd)
+        retorne "{ConversorMoedas.euro_usd} - Taxa atual de conversão EUR/USD"
+            retorne ConversorMoedas.valor1*ConversorMoedas.euro_usd
+    
+    funcao usd_to_euro(valor1, euro_usd)
+        retorne "{ConversorMoedas.usd_euro} - Taxa atual de conversão USD/EUR"
+            retorne ConversorMoedas.valor1*ConversorMoedas.usd_euro
+
+
+

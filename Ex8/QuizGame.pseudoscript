@@ -1,0 +1,29 @@
+modelo QuizGame:
+    construtor(pergunta, pontuacao_user)
+        QuizGame.pergunta =  [
+            {
+                "pergunta": "O que é World of Warcraft?",
+                "respostas": ["Um carro", "Um jogo", "Um objeto", "Um animal"],
+                "resposta_certa": "Um jogo"
+            },
+            {
+                "pergunta": "Qual a tua escola?",
+                "respostas": ["ETIC", "CETI", "TECI", "ICET"],
+                "resposta_certa": "ETIC"
+            },
+            {
+                "pergunta": "O que significa PW",
+                "respostas": ["Partição Web", "População Web", "Programação Web", "Problema Web"],
+                "resposta_certa": "Programação Web"
+            }
+        ]
+        QuizGame.pontuacao_user = 0
+    
+    
+    funcao verificar_resposta(resposta_user)
+         se QuizGame.resposta_certa != resposta_user
+            retorne "Errou!"
+         se QuizGame.resposta_certa == resposta_user
+            retorne "Parabéns acertou"
+                QuizGame.pontuacao_user += 5
+                    retorne "A sua pontuação atual é de: {QuizGame.pontuacao_user} pts"

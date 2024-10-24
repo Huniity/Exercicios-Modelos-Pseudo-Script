@@ -1,7 +1,7 @@
-importar toDoList como modulo
+importar ToDoList como modulo
 
 
-programa = modulo.toDoList()
+programa = modulo.ToDoList()
 
 
 funcao menu():
@@ -18,27 +18,28 @@ funcao menu():
 
                 entrada("Por favor escolhe uma opção:", opcao)
                 
-                    se opcao NAO numero OU opcao > 3 OU opcao > 1
-                        crash("Por favor escolhe uma opção acima")
-                            menu()
-                    
-                    se opcao == 1
-                        imprime("Vamos entao inserir uma tarefa")
-                            inserir_tarefa()
-                    se opcao == 2
-                        imprime("Vamos entao marcar a tarefa como concluída")
-                            inserir_tarefa()
-                    se opcao == 3
-                        imprime("Vamos entao listar as suas tarefas")
-                            programa.toDoList.listarTarefas()
-                    se opcao == 4
-                        imprime("Obrigado até já")
-                            quebra() 
+                    enquanto opcao NAO 4:
+                        se opcao NAO numero OU opcao > 3 OU opcao > 1:
+                            crash("Por favor escolhe uma opção acima")
+                                menu()
+                        
+                        se opcao == 1:
+                            imprime("Vamos entao inserir uma tarefa")
+                                inserir_tarefa()
+                        se opcao == 2:
+                            imprime("Vamos entao marcar a tarefa como concluída")
+                                inserir_tarefa()
+                        se opcao == 3:
+                            imprime("Vamos entao listar as suas tarefas")
+                                programa.ToDoList.listarTarefas()
+                        se opcao == 4:
+                            imprime("Obrigado até já")
+                                quebra() 
 
 
 funcao inserir_tarefa():
     entrada("Por favor introduza uma tarefa", tarefa_user)
-    imprime(programa.toDoList(tarefa_user))
+    imprime(programa.ToDoList(tarefa_user))
 
 
 
@@ -49,7 +50,7 @@ funcao inserir_tarefa():
 
 
 
-# programa = modulo.toDoList()
+# programa = modulo.ToDoList()
 
 
 

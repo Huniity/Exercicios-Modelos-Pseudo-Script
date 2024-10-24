@@ -1,0 +1,47 @@
+modelo TextEditor:
+    construtor(bloco_notas)
+    
+    TextEditor.bloco_notas = (titulo_nota: "", desc_nota: "")
+
+
+    funcao verificar_nota(bloco_notas):
+        se titulo_nota_user NAO EM TextEditor.bloco_notas
+            TextEditor.bloco_notas.adicionar(titulo_nota_user["titulo_notas"])
+            TextEditor.bloco_notas.adicionar(desc_nota_user["desc_notas"])
+                retorne "Nota e descrição adicionada!"
+        se titulo_nota_user EM TextEditor.bloco_notas
+            retorne "Ja existe nas notas"
+            
+
+
+    funcao editar_nota(bloco_notas):
+        se titulo_nota_user NAO EM TextEditor.bloco_notas
+            retorne "Nota ainda não existe"
+                TextEditor.verificar_nota()
+        se titulo_nota_user EM TextEditor.bloco_notas
+            TextEditor.bloco_notas.adicionar(nova_desc[desc_nota])
+                retorne "Nota editada! {TextEditor.bloco_notas[titulo_nota_user][desc_nota]}"
+
+
+
+    funcao remover_nota(bloco_notas):
+        bloco_notas_temp = ()
+            se titulo_nota_user NAO EM TextEditor.bloco_notas
+            retorne "Nota ainda não existe"
+                TextEditor.verificar_nota()
+            se titulo_nota_user EM TextEditor.bloco_notas
+                para cada titulo_nota, desc_nota em TextEditor.bloco_notas
+                    se TextEditor.bloco_notas[titulo_nota] != titulo_nota_user
+                        TextEditor.bloco_notas_temp.adicionar([titulo_nota])
+                TextEditor.bloco_notas = bloco_notas_temp
+                    retorne "As suas notas foram atualizadas"
+    
+    funcao listar_notas(bloco_notas)
+        para cada titulo_nota, desc_nota em TextEditor.bloco_notas:
+            imprime("A suas notas atualizadas são: {TextEditor.bloco_notas[titulo_nota][desc_nota]}")
+
+
+             
+
+
+

@@ -1,6 +1,6 @@
-importar bmicalculator como conversor
+importar Bmicalculator como conversor
 
-programa=conversor.bmicalculator()
+programa=conversor.Bmicalculator()
 
 funcao menu():
 
@@ -11,18 +11,20 @@ funcao menu():
                     2: Sair
             "
 
-    entrada("Por favor introduza uma das opções acima:")
-        se opcao NAO numero OU opcao > 3 OU opcao > 1
-            crash("Por favor escolhe uma opção acima")
-                menu()
-                    
-        se opcao == 1:
-            entrada("Insire por favor o seu peso", peso)
-            entrada("Insire por favor o seu tamanho", peso)
-                imprime(programa.calcular_bmi(peso, peso))
+    entrada("Por favor introduza uma das opções acima:", opcao)
 
-        se opcao == 2:
-            imprime("Obrigado até já")
-                quebra()
+        enquanto opcao NAO 2:    
+            se opcao NAO numero OU opcao > 3 OU opcao > 1:
+                crash("Por favor escolhe uma opção acima")
+                    menu()
+                        
+            se opcao == 1:
+                entrada("Insire por favor o seu peso", peso)
+                entrada("Insire por favor o seu tamanho", peso)
+                    imprime(programa.calcular_bmi(peso, peso))
+
+            se opcao == 2:
+                imprime("Obrigado até já")
+                    quebra()
 
 imprime(menu()) 

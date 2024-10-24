@@ -1,0 +1,15 @@
+modelo Bmicalculator:
+
+    funcao calcular_bmi(peso, tamanho)
+        resultado = Bmicalculator.peso / (Bmicalculator.tamanho * Bmicalculator.tamanho)
+            se resultado >= 15.9:
+                retorne "Está muito abaixo de peso"
+            se resultado >= 15.9 E <= 18.4:
+                retorne "Está abaixo de peso"
+            se resultado >= 18.5 E <= 24.9:
+                retorne "Está com peso normal"
+            se resultado >= 25.0 E <= 29.9:
+                retorne "Está acima do peso"
+            se resultado >= 30:
+                retorne "Está com obesidade"
+      

@@ -1,0 +1,42 @@
+#To-Do List: Crie uma aplicação de lista de tarefas. O programa deve permitir adicionar
+#tarefas, marcar tarefas como concluídas e listar as tarefas pendentes.
+
+modelo ToDoList():
+
+ToDoList.tarefa_pendente = ('Tarefa': tarefa, 'Status': status)
+ToDoList.tarefa_concluida = ('Tarefa': tarefa, 'Status': status)
+ToDoList.nova_lista = ()
+
+    funcao pedirTarefa(tarefa)
+        se tarefa EM ToDoList.tarefa_pendente():
+            marcarConcluida()
+        se tarefa NAO string:
+            crash("Tem de inserir cráteres")
+        se tarefa NAO EM ToDoList.tarefa_pendente():
+            ToDoList.tarefa_pendente.tarefa.adicionar(tarefa)
+            retorne "{ToDoList.tarefa_pendente['Tarefa']} - {ToDoList.tarefa_pendente['Status']} adicionado"
+
+    funcao marcarConcluida(tarefa)
+        imprime(listarTarefas())
+            para cada tarefa, status em tarefa_pendente:
+                se tarefa_user EM tarefa_pendente():
+                    retorne "A sua tarefa está como pendente"
+                        entrada("Pretende mudar a sua tarefa para concluída? (1: SIM/ 2: NAO)", opcao)
+                            se opcao NAO numero:
+                                crash("Tem de escrever um número")
+                                tarefa_concluida.tarefa.adicionar(tarefa_user)
+                                removerTarefa()
+
+    
+    funcao removerTarefa(tarefa)
+        enquanto tarefa_pendente.tamanho() > 0:
+            para cada tarefa em tarefa_pendente():
+                se tarefa != tarefa_user:
+                    nova_lista.adicionar(tarefa)
+        tarefa_pendente = nova_lista()
+        listarTarefas()
+
+    funcao listarTarefas()
+        imprime("Estas são as suas tarefas pendentes:")
+            para cada tarefa, status em ToDoList.tarefa_pendente():
+                imprime({ToDoList.tarefa_pendente['Tarefa']} - {ToDoList.tarefa_pendente['Status']})

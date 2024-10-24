@@ -1,6 +1,6 @@
-importar conversorFtoC como conversor
+importar ConversorFtoC como conversor
 
-conversorFtoC=conversor.conversorFtoC()
+conversorFtoC=conversor.ConversorFtoC()
 
 funcao menu():
 
@@ -9,21 +9,22 @@ funcao menu():
                 As opções possíveis são:
                     1: Celsius to Farenheit
                     2: Farenheit to Celsius
+                    3: Sair
             "
 
     entrada("Por favor introduza uma das opções acima:", opcao)
-        se opcao NAO numero OU opcao > 3 OU opcao > 1
-                        crash("Por favor escolhe uma opção acima")
-                            menu()
-                    
-                    se opcao == 1:
-                        entrada("Insire por favor uma temperatura em celsius", valor1)
-                            imprime(conversorFtoC.CtoF(valor1))
-                    se opcao == 2:
-                        entrada("Insire por favor uma temperatura em farenheit", valor2)
-                            imprime(conversorFtoC.FtoC(valor2))
-                    se opcao == 3:
-                        imprime("Obrigado até já")
-                            quebra()
+        enquanto opcao NAO 3:
+            se opcao NAO numero OU opcao > 3 OU opcao > 1:
+                            crash("Por favor escolhe uma opção acima")
+                                menu()
+            se opcao == 1:
+                entrada("Insire por favor uma temperatura em celsius", valor1)
+                    imprime(conversorFtoC.CtoF(valor1))
+            se opcao == 2:
+                entrada("Insire por favor uma temperatura em farenheit", valor2)
+                    imprime(conversorFtoC.FtoC(valor2))
+            se opcao == 3:
+                imprime("Obrigado até já")
+                    quebra()
 
 imprime(menu()) 
