@@ -3,21 +3,26 @@ modelo BookingSystem:
 
     BookingSystem.comp_casamento = 
             (
-                'Casamento': 'Casamento - Quinta Monte Amarelo', 
-                'Preço': 2550, 
-                'Data':[25/11/2024, 27/11/2024]
+                'Casamento': 'Casamento - Quinta Monte Amarelo'
+                ( 
+                    'Preço': 2550, 
+                    'Data':[25/11/2024, 27/11/2024]
+                )
             )
-
     BookingSystem.hotel_paris =                          
             (
-                'Hotel': 'Hilton Paris',
+                'Hotel': 'Hilton Paris'
+                (
                 'Quartos':['Quarto Superior', 'Quarto Premium'],
                 'Data': [26/11/2024, 27/11/2024, 28/11/2024, 30/11/2024],
                 'Preço': 455
+                )            
             )
 
     BookingSystem.reserva_comp = ()
+    BookingSystem.temp1 = ()
     BookingSystem.reserva_hotel = ()
+    
     
     funcao reservar_compromisso(comp_casamento, reserva_comp, escolha_user_comp, escolha_user_data)
         se escolha_user_comp NAO EM BookingSystem.comp_casamento['Casamento']:
@@ -34,6 +39,11 @@ modelo BookingSystem:
                 BookingSystem.reserva_comp['Casamento'].adicionar(escolha_user_comp)
                 BookingSystem.reserva_comp['Data'].adicionar(escolha_user_data)
                 BookingSystem.reserva_comp['Preço'].adicionar(BookingSystem.comp_casamento['Preço'])
+                    para cada chave, valor em BookingSystem.comp_casamento['Casamento']
+                        se BookingSystem.comp_casamento['Data'] != escolhe escolha_user_data
+                            BookingSystem.temp1.adicionar['Casamento']['Data']['Preço']
+                                BookingSystem.comp_casamento = BookingSystem.temp1
+
 
     funcao reservar_hotel(hotel_paris, reserva_hotel, escolha_user_comp, escolha_user_data, escolha_user_noites)
         se escolha_user_comp NAO EM BookingSystem.hotel_paris['Casamento']:
@@ -43,7 +53,7 @@ modelo BookingSystem:
         se escolha_user_comp EM BookingSystem.hotel_paris['Casamento']:
             se escolhe_user_data NAO numero:
                 crash("Tem de inserir a data no formato indicado acima")
-            se escolhe_user_data NAO EM BookingSystem.hotel_paris['Data']:
+            se escolhe_user_data NAO EM BookingSystem.hotel_paris['Data'] OU se escolhe_user_data EM BookingSystem.reserva_hotel['Data']
                 crash("A data que escolheu não está disponível.")
             se escolhe_user_data EM BookingSystem.hotel_paris['Data']:
                 preco_final = BookingSystem.hotel_paris['Preço'] * escolhe_user_noite
@@ -51,12 +61,17 @@ modelo BookingSystem:
                         BookingSystem.reserva_comp['Casamento'].adicionar(escolha_user_comp)
                         BookingSystem.reserva_comp['Data'].adicionar(escolha_user_data)
                         BookingSystem.reserva_comp['Preço'].adicionar(BookingSystem.hotel_paris['Preço'])
-
+                            para cada chave, valor em BookingSystem.hotel_paris['Casamento']
+                                se BookingSystem.hotel_paris['Data'] != escolhe escolha_user_data
+                                    BookingSystem.temp1.adicionar['Casamento']['Data']['Preço']
+                                        BookingSystem.hotel_paris = BookingSystem.temp1
 
 
     funcao listar_reservas()
         para cada chave, valor em BookingSystem.reserva_comp:
+        para cada valor em BookingSystem.reserva_comp.valores():
             para cada chave, valor em BookingSystem.reserva_hotel:
+            para cada valor em BookingSystem.reserva_hotel.valores():
                 imprime("{BookingSystem.comp_casamento['Casamento']} - {BookingSystem.comp_casamento['Preço']} - {BookingSystem.comp_casamento['Data']}")
                     imprime("{BookingSystem.hotel_paris['Hotel']} - {BookingSystem.hotel_paris['Quartos']} - {BookingSystem.hotel_paris['Data']} - {BookingSystem.hotel_paris['Preço']}")
    
