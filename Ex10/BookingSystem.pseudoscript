@@ -1,51 +1,77 @@
 modelo BookingSystem:
-    construtor(comp_casamento, hotel_paris):
+    construtor(comp_casamento, hotel_paris, reserva_comp, reserva_hotel):
 
-    BookingSystem.comp_casamento = [
-            {
-                'Casamento': 'Quinta Monte Amarelo', 
+    BookingSystem.comp_casamento = 
+            (
+                'Casamento': 'Casamento - Quinta Monte Amarelo', 
                 'Preço': 2550, 
                 'Data':[25/11/2024, 27/11/2024]
-            }
-        ]
+            )
 
-    BookingSystem.hotel_paris = [
-                         
-            {
+    BookingSystem.hotel_paris =                          
+            (
                 'Hotel': 'Hilton Paris',
                 'Quartos':['Quarto Superior', 'Quarto Premium'],
-                'Data': [26/11/2024, 30/11/2024],
+                'Data': [26/11/2024, 27/11/2024, 28/11/2024, 30/11/2024],
                 'Preço': 455
-            }
-        ]
+            )
 
     BookingSystem.reserva_comp = ()
     BookingSystem.reserva_hotel = ()
     
-    funcao reservar_compromisso()
-        para cada chave, valor em BookingSystem.comp_casamento:
-            imprime("Tipo de compromisso disponível: {BookingSystem.comp_casamento['Casamento']} | Preço: {BookingSystem.comp_casamento['Preço']} | Data Disponível: {BookingSystem.comp_casamento['Data']}")
-        se escolha_user NAO EM BookingSystem.comp_casamento:
-            crash("Este compromisso não está disponível")
-        se escolha_user EM BookingSystem.comp_casamento:
-            se data_user NAO EM BookingSystem.comp_casamento['Data']:
-                crash("Está data não está disponível.")
-                imprime(reservar_compromisso())
-            se data_user EM BookingSystem.comp_casamento['Data']:
-                BookingSystem.reserva_comp.adicionar(BookingSystem.comp_casamento['Casamento']['Preço']['Data'])
-                BookingSystem.reserva_comp['Data'] == data_user
-                    entrada("Quantas noites pretende?", noites)
-                        BookingSystem.reserva_comp['Preço'] = BookingSystem.comp_casamento['Preço'] * noites 
-                            retorne "O seu {BookingSystem.reserva_comp['Casamento']} está reservado na data {BookingSystem.reserva_comp['Data']} no preço de {BookingSystem.reserva_comp['Preço']}"
+    funcao reservar_compromisso(comp_casamento, reserva_comp, escolha_user_comp, escolha_user_data)
+        se escolha_user_comp NAO EM BookingSystem.comp_casamento['Casamento']:
+            crash("Tente uma das opções acima")
+        se escolha_user_comp NAO string:
+            crash("Tente uma das opções acima")
+        se escolha_user_comp EM BookingSystem.comp_casamento['Casamento']:
+            se escolhe_user_data NAO numero:
+                crash("Tem de inserir a data no formato indicado acima")
+            se escolhe_user_data NAO EM BookingSystem.comp_casamento['Data']:
+                crash("A data que escolheu não está disponível.")
+            se escolhe_user_data EM BookingSystem.comp_casamento['Data']:
+                imprime("{BookingSystem.comp_casamento['escolha_user_comp']} Reservado para: {BookingSystem.comp_casamento['escolha_user_data']}")
+                BookingSystem.reserva_comp['Casamento'].adicionar(escolha_user_comp)
+                BookingSystem.reserva_comp['Data'].adicionar(escolha_user_data)
+                BookingSystem.reserva_comp['Preço'].adicionar(BookingSystem.comp_casamento['Preço'])
 
-    funcao reservar_hotel()
+    funcao reservar_hotel(hotel_paris, reserva_hotel, escolha_user_comp, escolha_user_data, escolha_user_noites)
+        se escolha_user_comp NAO EM BookingSystem.hotel_paris['Casamento']:
+            crash("Tente uma das opções acima")
+        se escolha_user_comp NAO string:
+            crash("Tente uma das opções acima")
+        se escolha_user_comp EM BookingSystem.hotel_paris['Casamento']:
+            se escolhe_user_data NAO numero:
+                crash("Tem de inserir a data no formato indicado acima")
+            se escolhe_user_data NAO EM BookingSystem.hotel_paris['Data']:
+                crash("A data que escolheu não está disponível.")
+            se escolhe_user_data EM BookingSystem.hotel_paris['Data']:
+                preco_final = BookingSystem.hotel_paris['Preço'] * escolhe_user_noite
+                    imprime("{BookingSystem.hotel_paris['escolha_user_comp']} | {escolha_user_noites}  em: {BookingSystem.hotel_paris['Quarto']} | Reservado para: {BookingSystem.hotel_paris['escolha_user_data']} no valor de {preco_final} €.")
+                        BookingSystem.reserva_comp['Casamento'].adicionar(escolha_user_comp)
+                        BookingSystem.reserva_comp['Data'].adicionar(escolha_user_data)
+                        BookingSystem.reserva_comp['Preço'].adicionar(BookingSystem.hotel_paris['Preço'])
 
 
 
     funcao listar_reservas()
+        para cada chave, valor em BookingSystem.reserva_comp:
+            para cada chave, valor em BookingSystem.reserva_hotel:
+                imprime("{BookingSystem.comp_casamento['Casamento']} - {BookingSystem.comp_casamento['Preço']} - {BookingSystem.comp_casamento['Data']}")
+                    imprime("{BookingSystem.hotel_paris['Hotel']} - {BookingSystem.hotel_paris['Quartos']} - {BookingSystem.hotel_paris['Data']} - {BookingSystem.hotel_paris['Preço']}")
+   
+   
+    funcao listar_compromissos()
+        para cada chave, valor em BookingSystem.comp_casamento:
+            imprime("{BookingSystem.comp_casamento['Casamento']} - {BookingSystem.comp_casamento['Preço']} - {BookingSystem.comp_casamento['Data']}")
 
 
-    funcao verificar_dispo_comp()
+    funcao listar_hotels()
+        para cada chave, valor em BookingSystem.hotel_paris:
+            imprime("{BookingSystem.hotel_paris['Hotel']} - {BookingSystem.hotel_paris['Quartos']} - {BookingSystem.hotel_paris['Data']} - {BookingSystem.hotel_paris['Preço']}")
 
 
-    funcao verificar_dispo_hotel()
+    
+    
+
+        

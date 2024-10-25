@@ -22,16 +22,18 @@ funcao menu():
                         menu()
             
                 se opcao == 1:
-                    imprime(programa.BookingSystem.reservar_compromisso())
-                    entrada("Escolhe um compromisso", escolha_user)
-                    #funcao modelo escolher compromisso
+                    imprime(programa.BookingSystem.listar_compromissos())
+                        entrada("Escolhe um compromisso", escolha_user_comp)
+                        entrada("Escolhe uma data", escolhe_user_data)
+                            imprime(programa.BookingSystem.reservar_compromisso(escolha_user_comp, escolhe_user_data))
                 se opcao == 2:
-                    imprime(programa.BookingSystem.reserva_hotel())
-                    entrada("Escolhe um quarto de hotel", escolha_user)
-                    #funcao modelo escolhe quarto
+                    imprime(programa.BookingSystem.listar_hotels())
+                        entrada("Escolhe um quarto de hotel", escolha_user_comp)
+                        entrada("Escolhe uma data", escolhe_user_data)
+                        entrada("Escolhe quantas noites", escolhe_user_noite)
+                            imprime(programa.BookingSystem.reserva_hotel(escolha_user, escolhe_user_data))
                 se opcao == 3:
                     imprime(programa.BookingSystem.listar_reservas())
-                    #funcao modelo ver reservas atuais
                 se opcao == 4:
                     imprime("Obrigado até já")
                         quebra()
